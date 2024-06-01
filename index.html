@@ -12,6 +12,7 @@
             background: url('background.jpg') no-repeat center center fixed;
             background-size: cover;
             color: #fff;
+            overflow: hidden; /* Hide overflow to prevent horizontal scrolling */
         }
         h1, h2 {
             color: #ff1c1c; /* Neon Red */
@@ -37,6 +38,32 @@
         .neon {
             color: #39ff14; /* Neon Green */
             text-shadow: 0 0 5px #39ff14, 0 0 10px #39ff14, 0 0 20px #39ff14, 0 0 40px #39ff14;
+        }
+        .rain {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none; /* Make raindrops non-interactive */
+            z-index: -1; /* Move raindrops behind other content */
+        }
+        .rain .drop {
+            position: absolute;
+            width: 2px;
+            height: 20px;
+            background: rgba(255, 255, 255, 0.5); /* Semi-transparent white */
+            animation: fall linear infinite; /* Apply animation to each raindrop */
+        }
+        @keyframes fall {
+            0% {
+                transform: translateY(-50px); /* Start above the screen */
+                opacity: 0; /* Invisible at the start */
+            }
+            100% {
+                transform: translateY(100vh); /* End below the screen */
+                opacity: 1; /* Fully visible at the end */
+            }
         }
     </style>
 </head>
@@ -94,5 +121,10 @@
         <h2>Contact</h2>
         <p>Have questions? Contact us at <a href="mailto:darkmouse@tutamail.com">darkmouse@tutamail.com</a>.</p>
     </section>
-</body>
-</html>
+    <!-- Rain effect -->
+    <div class="rain">
+        <!-- Generate multiple raindrops -->
+        <div class="drop" style="left: 5%; animation-duration: 2s;"></div>
+        <div class="drop" style="left: 10%; animation-duration: 1.5s;"></div>
+        <div class="drop" style="left: 15%; animation-duration: 2.5s;"></div>
+        <!-- Add more raindrops with different left positions and animation durations
