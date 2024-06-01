@@ -1,2 +1,1 @@
-# Darkmousecoin
-Ai Memecoin Darkmouse
+
