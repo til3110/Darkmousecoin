@@ -39,16 +39,23 @@
             text-shadow: 0 0 5px #39ff14, 0 0 10px #39ff14, 0 0 20px #39ff14, 0 0 40px #39ff14;
         }
         img {
-            max-width: 100%;
+            max-width: 65%; /* Reduced the size by 35% */
             height: auto;
         }
         ul, ol {
             list-style: none;
             padding: 0;
+            text-align: center; /* Center the list content */
         }
         ul li, ol li {
             text-align: left;
             margin-left: 15px;
+            display: inline-block; /* Center the list items */
+        }
+        .center-content {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
         }
     </style>
 </head>
@@ -81,7 +88,7 @@
             <img src="story_image2.jpg" alt="Story Image 2">
         </div>
     </section>
-    <section id="roadmap" class="section">
+    <section id="roadmap" class="section center-content">
         <h2>Roadmap</h2>
         <p>Our future plans and milestones:</p>
         <ul>
@@ -92,7 +99,7 @@
             <li>Q1 2025: Cheese Exchange</li>
         </ul>
     </section>
-    <section id="buy" class="section">
+    <section id="buy" class="section center-content">
         <h2>How to Buy</h2>
         <p>Here's how you can acquire Darkmouse:</p>
         <ol>
@@ -109,4 +116,3 @@
     </section>
 </body>
 </html>
-
