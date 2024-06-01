@@ -12,6 +12,7 @@
             background: url('background.jpg') no-repeat center center fixed;
             background-size: cover;
             color: #fff;
+            overflow: hidden;
         }
         h1, h2 {
             color: #ff1c1c; /* Neon Red */
@@ -33,14 +34,51 @@
             padding: 50px;
             text-align: center;
             margin-top: 60px;
+            position: relative;
+            z-index: 2;
         }
         .neon {
             color: #39ff14; /* Neon Green */
             text-shadow: 0 0 5px #39ff14, 0 0 10px #39ff14, 0 0 20px #39ff14, 0 0 40px #39ff14;
         }
+        img {
+            max-width: 100%;
+            height: auto;
+        }
+        ul, ol {
+            list-style: none;
+            padding: 0;
+        }
+        ul li, ol li {
+            text-align: left;
+            margin-left: 15px;
+        }
+        .rain {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: 1;
+        }
+        .rain-drop {
+            position: absolute;
+            bottom: 100%;
+            width: 2px;
+            height: 10px;
+            background: rgba(255, 255, 255, 0.5);
+            animation: fall linear infinite;
+        }
+        @keyframes fall {
+            to {
+                transform: translateY(100vh);
+            }
+        }
     </style>
 </head>
 <body>
+    <div class="rain" id="rain"></div>
     <nav>
         <img src="logo.png" alt="Darkmouse Logo" style="height: 50px; vertical-align: middle;">
         <a href="#home">Home</a>
@@ -56,7 +94,7 @@
     </section>
     <section id="about" class="section">
         <h2>About Darkmouse</h2>
-        <img src="darkmouse.png" alt="Darkmouse" style="width: 200px; height: auto;">
+        <img src="darkmouse.png" alt="Darkmouse">
         <p>Darkmouse is a futuristic Memecoin with a unique charm. The black mouse with red eyes stands for the perfect blend of beauty and danger.</p>
     </section>
     <section id="story" class="section">
@@ -65,8 +103,8 @@
         <p>But the tale doesn't unfold solely in the darkness. With the Launch and the sale of the Token, the narrative bursts into the light. This isn't just Darkmouse's fight anymore; it's a saga shaped by the crowd. Every Coin minted becomes a chapter written, a twist plotted, a villain thwarted. The power lies with you, the patrons, to propel Darkmouse's legend forward.</p>
         <p>So, are you ready to join the adventure? With each Coin, you become a co-conspirator in the ongoing battle against villainy. Let the rise of the Coin fuel the rise of Darkmouse!</p>
         <div>
-            <img src="story_image1.jpg" alt="Story Image 1" style="width: 400px; height: auto;">
-            <img src="story_image2.jpg" alt="Story Image 2" style="width: 400px; height: auto;">
+            <img src="story_image1.jpg" alt="Story Image 1">
+            <img src="story_image2.jpg" alt="Story Image 2">
         </div>
     </section>
     <section id="roadmap" class="section">
@@ -93,6 +131,21 @@
     <section id="contact" class="section">
         <h2>Contact</h2>
         <p>Have questions? Contact us at <a href="mailto:darkmouse@tutamail.com">darkmouse@tutamail.com</a>.</p>
+        <h2 style="color: #39ff14;">Now it's in Your hands!</h2>
     </section>
+    <script>
+        function createRain() {
+            const rainContainer = document.getElementById('rain');
+            for (let i = 0; i < 100; i++) {
+                const rainDrop = document.createElement('div');
+                rainDrop.classList.add('rain-drop');
+                rainDrop.style.left = `${Math.random() * 100}vw`;
+                rainDrop.style.animationDuration = `${Math.random() * 2 + 1}s`;
+                rainContainer.appendChild(rainDrop);
+            }
+        }
+        createRain();
+    </script>
 </body>
 </html>
+
